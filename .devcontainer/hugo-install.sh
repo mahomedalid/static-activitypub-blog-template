@@ -7,14 +7,8 @@
 #|Visit gohugo.io for more info on Hugo              |
 #|---------------------------------------------------|
 
-# Update system
-sudo yum update -y
-
-# Install required tools
-sudo yum install -y git wget
-
 # Set Hugo version
-HUGO_VERSION="0.119.0"  # Replace with the version you want
+HUGO_VERSION="0.124.0"  # Replace with the version you want
 
 # Choose Hugo edition: "standard" or "extended"
 HUGO_EDITION="extended"
