@@ -45,12 +45,21 @@ jobs:
       - name: Build blog with Hugo
         working-directory: ./blog
         run: |-
+          ls ~/.activitypubdotnet/latest
+          ~/.activitypubdotnet/latest/Rss2Outbox
           ../scripts/01-build.sh
 
       - name: Deploy to Azure Storage
+        working-directory: ./blog
         run: |-
-          ./02-deploy.sh
+          ../scripts/02-deploy.sh
 
-      - name: Set content type
+     - name: Set content type
+        working-directory: ./blog
         run: |-
-          ./03-az-set-content-type.sh
+          ../scripts/03-az-set-content-type.sh
+
+     - name: Broadcast notes
+        working-directory: ./blog
+        run: |-
+          ../scripts/04-broadcast-notes.sh
