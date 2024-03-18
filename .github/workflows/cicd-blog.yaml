@@ -1,0 +1,40 @@
+name: Build and Deploy Blog
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Hugo
+        working-directory: ./.devcontainer/
+        run: |-
+          ./hugo-install.sh
+
+      - name: Download Almost Static ActivityPub Utilities
+        run: |
+          wget https://github.com/mahomedalid/almost-static-activitypub/releases/download/0.0.1/activitypub-utils-0.0.1-linux-x64.tar.gz
+          mkdir -p ~/.activitypubdotnet
+          tar -xzvf activitypub-utils-0.0.1-linux-x64.tar.gz  -C ~/.activitypubdotnet/
+          ln -s ~/.activitypubdotnet/activitypub-utils-0.0.1-linux-x64/ ~/.activitypubdotnet/latest
+          export PATH=$PATH:~/.activitypubdotnet/latest
+
+      - name: Build blog with Hugo
+        working-directory: ./blog
+        run: |-
+          ../scripts/01-build.sh
+
+      - name: Deploy to Azure Storage
+        run: |-
+          ./02-deploy.sh
+
+      - name: Set content type
+        run: |-
+          ./03-az-set-content-type.sh
