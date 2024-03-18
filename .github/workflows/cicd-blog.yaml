@@ -45,8 +45,8 @@ jobs:
       - name: Build blog with Hugo
         working-directory: ./blog
         run: |-
-          ls ~/.activitypubdotnet/latest
-          ~/.activitypubdotnet/latest/Rss2Outbox
+          export PATH=$PATH:~/.activitypubdotnet/latest
+          echo $PATH
           ../scripts/01-build.sh
 
       - name: Deploy to Azure Storage
