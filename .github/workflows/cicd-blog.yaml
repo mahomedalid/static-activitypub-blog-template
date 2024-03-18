@@ -1,11 +1,12 @@
 name: Build and Deploy Blog
 
 on:
-  push:
-    branches:
-      - main  # Change this to your main branch name
-    paths:
-      - 'blog/**'
+  - workflow_dispatch
+  - push:
+      branches:
+        - main  # Change this to your main branch name
+      paths:
+        - 'blog/**'
 
 jobs:
   build:

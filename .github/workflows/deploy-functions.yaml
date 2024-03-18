@@ -1,9 +1,6 @@
 name: Deploy ActivityPub Inbox to Azure Function App
 
-on:
-  schedule:
-      # * is a special character in YAML so you have to quote this string
-      - cron:  '1 0 * * *'
+on: workflow_dispatch
 
 # CONFIGURATION
 # For help, go to https://github.com/Azure/Actions
