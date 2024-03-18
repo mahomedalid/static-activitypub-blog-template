@@ -30,10 +30,6 @@ jobs:
         with:
           creds: ${{ secrets.AZ_SP_CREDENTIALS }}
 
-      - name: Set Az Keys temporarily
-        run: |-
-          AZURE_STORAGE_KEY=$(az storage account keys list -g $AZURE_RESOURCE_GROUP -n $AZURE_STORAGE_ACCOUNT --query [0].value --output tsv)
-
       - name: Download Almost Static ActivityPub Utilities
         run: |
           wget https://github.com/mahomedalid/almost-static-activitypub/releases/download/0.0.1/activitypub-utils-0.0.1-linux-x64.tar.gz
@@ -52,14 +48,17 @@ jobs:
       - name: Deploy to Azure Storage
         working-directory: ./blog
         run: |-
+          AZURE_STORAGE_KEY=$(az storage account keys list -g $AZURE_RESOURCE_GROUP -n $AZURE_STORAGE_ACCOUNT --query [0].value --output tsv)
           ../scripts/02-deploy.sh
 
       - name: Set content type
         working-directory: ./blog
         run: |-
+          AZURE_STORAGE_KEY=$(az storage account keys list -g $AZURE_RESOURCE_GROUP -n $AZURE_STORAGE_ACCOUNT --query [0].value --output tsv)
           ../scripts/03-az-set-content-type.sh
 
       - name: Broadcast notes
         working-directory: ./blog
         run: |-
+          AZURE_STORAGE_KEY=$(az storage account keys list -g $AZURE_RESOURCE_GROUP -n $AZURE_STORAGE_ACCOUNT --query [0].value --output tsv)
           ../scripts/04-broadcast-notes.sh
