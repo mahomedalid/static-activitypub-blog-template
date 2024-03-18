@@ -1,4 +1,8 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'My New Hugo Site enabled for the Fediverse!'
 theme = 'PaperMod'
+
+[[deployment.targets]]
+name = "azure"
+URL="azblob://$web"
