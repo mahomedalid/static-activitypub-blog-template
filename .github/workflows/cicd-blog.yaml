@@ -54,12 +54,12 @@ jobs:
         run: |-
           ../scripts/02-deploy.sh
 
-     - name: Set content type
+      - name: Set content type
         working-directory: ./blog
         run: |-
           ../scripts/03-az-set-content-type.sh
 
-     - name: Broadcast notes
+      - name: Broadcast notes
         working-directory: ./blog
         run: |-
           ../scripts/04-broadcast-notes.sh
