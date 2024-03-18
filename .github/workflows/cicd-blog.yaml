@@ -10,6 +10,7 @@ on:
 
 env:
   AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}   # set this to your function app name on Azure
+  AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}   # set this to your function app name on Azure
 
 jobs:
   build:
