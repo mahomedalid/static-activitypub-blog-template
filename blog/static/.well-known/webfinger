@@ -1,0 +1,13 @@
+{
+  "subject": "acct:blog@stemjhiwclz6mcs.z22.web.core.windows.net",
+  "aliases": [
+    "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/actor"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/actor"
+    }
+  ]
+}

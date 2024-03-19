@@ -38,23 +38,10 @@ jq -n --arg baseDomain "$STATIC_WEB_URL" \
     --arg azFuncName "$AZURE_FUNCTION_NAME" \
     '{ "baseDomain": $baseDomain, "actorName": $actorName, "inboxEndpoint": $inboxEndpoint, "authorUsername": $authorUsername }' > $config_file
 
-echo "Generating actor file"
+echo "Generating hugo.toml"
 
-jq -n --argfile config $config_file --arg publicKey "$PUBLIC_KEY" -f "$script_dir/templates/actor" > "$script_dir/../blog/static/socialweb/actor"
-
-echo "Generating webfinger file"
-
-jq -n --argfile config $config_file --arg publicKey "$PUBLIC_KEY" -f "$script_dir/templates/webfinger" > "$script_dir/../blog/static/.well-known/webfinger"
-
-echo "Configuring inbox"
-
-actorKeyId="${STATIC_WEB_URL}socialweb/actor#main-key"
-
-az functionapp config appsettings set --name $AZURE_FUNCTION_NAME \
-     --resource-group $RESOURCE_GROUP --settings BaseDomain="$STATIC_WEB_URL" ActorName=blog ActorKeyId="$actorKeyId"
-
-az functionapp config appsettings set --name $AZURE_FUNCTION_NAME \
-     --resource-group $RESOURCE_GROUP --settings ActorPrivatePEMKey="$PRIVATE_KEY"
+echo "baseURL='${STATIC_WEB_URL}'" > "$script_dir/../blog/hugo.toml"
+cat "$script_dir/templates/hugo.toml" >> "$script_dir/../blog/hugo.toml"
 
 echo "Commiting"
 

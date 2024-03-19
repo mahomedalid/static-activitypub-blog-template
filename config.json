@@ -1,0 +1,6 @@
+{
+  "baseDomain": "https://stemjhiwclz6mcs.z22.web.core.windows.net/",
+  "actorName": "blog",
+  "inboxEndpoint": "https://func-emjhiwclz6mcs.azurewebsites.net/api/Inbox",
+  "authorUsername": "@mapache@hachyderm.io"
+}

@@ -1,0 +1,39 @@
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "id": "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/actor",
+  "type": "Person",
+  "following": "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/following",
+  "followers": "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/followers",
+  "inbox": "https://func-emjhiwclz6mcs.azurewebsites.net/api/Inbox",
+  "outbox": "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/outbox",
+  "preferredUsername": "blog",
+  "name": "My blog name",
+  "summary": "A new static site ready for the Fediverse!",
+  "url": "https://stemjhiwclz6mcs.z22.web.core.windows.net/",
+  "discoverable": true,
+  "memorial": false,
+  "icon": {
+    "type": "Image",
+    "mediaType": "image/png",
+    "url": "https://stemjhiwclz6mcs.z22.web.core.windows.net/images/avatar.png"
+  },
+  "image": {
+    "type": "Image",
+    "mediaType": "image/png",
+    "url": "https://stemjhiwclz6mcs.z22.web.core.windows.net/images/avatar.png"
+  },
+  "publicKey": {
+    "@context": "https://w3id.org/security/v1",
+    "@type": "Key",
+    "id": "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/actor#main-key",
+    "owner": "https://stemjhiwclz6mcs.z22.web.core.windows.net/socialweb/actor",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7zlJjTVPbq8KEs2WR2Bn\nLd/87VUjyshoA1q+AJPySFJyvQdrB74ZqVhCYc5z7St9WjROOvm9o54wazRXzxTN\nKm5tHa0I6rgYi4x9zv9EpnESUcWSqKDoUoEdj0D5vriG2G1JuYA2hjRkxRX7DTNH\nF8jw2/lA3f3yvd5GeVsZE/scjLxzqJd+pSpk2i3VYU1X/m/fsPB+zWlpH8RgxU/h\nQFt5gZ1gIJ/C9qQdqHgiOaPga6g7x/df6O0q9oSsRCjRKY00BEP2CLxM2oFf4DiA\nrZrVRCnwv01YQ+3XQbs8Z6Xv8z3dncT3SrX/3Y2iZXCP5Jh+7GMlNwywEXMnXmW6\nxQIDAQAB\n-----END PUBLIC KEY-----"
+  },
+  "attachment": [
+    {
+      "type": "PropertyValue",
+      "name": "Blog",
+      "value": "<a href=\"https://stemjhiwclz6mcs.z22.web.core.windows.net/\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"\">Blog</span><span class=\"invisible\"></span></a>"
+    }
+  ]
+}
