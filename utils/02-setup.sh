@@ -55,5 +55,6 @@ az functionapp config appsettings set --name $AZURE_FUNCTION_NAME \
 
 echo "Commiting"
 
-
-
+git add .
+git commit -am "Initial setup"
+git push -u origin HEAD
