@@ -12,6 +12,9 @@ actorName=$(jq -r '.actorName' $config_file)
 authorUsername=$(jq -r '.authorUsername' $config_file)
 siteActorUri="${baseDomain}${actorName}"
 
+blog_dir=$(cd "$script_dir/../blog" && pwd)
+
+pushd $blog_dir
 hugo
 Rss2Outbox --rssPath public/index.xml \
     --staticPath static \
@@ -19,3 +22,4 @@ Rss2Outbox --rssPath public/index.xml \
     --siteActorUri $siteActorUri \
     --domain $baseDomain
 hugo
+popd

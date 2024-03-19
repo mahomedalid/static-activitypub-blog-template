@@ -18,6 +18,7 @@ url = "/"
 title = 'My New Hugo Site enabled for the Fediverse!'
 author = 'Me'
 description = "A static site fediverse enabled by activitypub!"
+github="mahomedalid"
 
 [[deployment.targets]]
 name = "azure"
