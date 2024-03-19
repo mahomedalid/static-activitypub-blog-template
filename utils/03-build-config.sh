@@ -15,7 +15,7 @@ CONFIG_FILE="$script_dir/../config.json"
 DEPLOY_FILE="$script_dir/../deploy.json"
 STATIC_WEB_URL=$(cat $CONFIG_FILE  | jq '.baseDomain' -r)
 AZURE_FUNCTION_NAME=$(cat $DEPLOY_FILE  | jq '.azureFunctionsName' -r)
-RESOURCE_GROUP=$(cat $DEPLOY_FILE  | jq '.staticap3' -r)
+RESOURCE_GROUP=$(cat $DEPLOY_FILE  | jq '.resourceGroupName' -r)
 
 echo "Generating actor file"
 

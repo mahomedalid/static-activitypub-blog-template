@@ -39,10 +39,11 @@ jobs:
 
       - name: Download Almost Static ActivityPub Utilities
         run: |
-          wget https://github.com/mahomedalid/almost-static-activitypub/releases/download/0.0.1/activitypub-utils-0.0.1-linux-x64.tar.gz
+          VERSION=0.0.3
+          wget https://github.com/mahomedalid/almost-static-activitypub/releases/download/$VERSION/activitypub-utils-$VERSION-linux-x64.tar.gz
           mkdir -p ~/.activitypubdotnet
-          tar -xzvf activitypub-utils-0.0.1-linux-x64.tar.gz  -C ~/.activitypubdotnet/
-          ln -s ~/.activitypubdotnet/activitypub-utils-0.0.1-linux-x64/ ~/.activitypubdotnet/latest
+          tar -xzvf activitypub-utils-$VERSION-linux-x64.tar.gz  -C ~/.activitypubdotnet/
+          ln -s ~/.activitypubdotnet/activitypub-utils-$VERSION-linux-x64/ ~/.activitypubdotnet/latest
           export PATH=$PATH:~/.activitypubdotnet/latest
 
       - name: Build blog with Hugo
