@@ -11,28 +11,30 @@ Template to create a static website blog activitypub enabled powered by Azure.
 
 ### Method 1. GitHub Codespaces
 
-1. Open/create a GitHub Codespace in this repository. It will take a few minutes.
-2. In the terminal window execute `az login` or `az login --use-device-code` to login in Azure.
-3. 
-5. Execute `./utils/00-create-sp.sh`, save contents into AZ_SP_CREDENTIALS
-6. Deploy infra:
-
-Basic: 
+1. Open a GitHub Codespace.
+2. `az login` or `az login --use-device-code`
+3. Give the deployment a meaningful name `export STATIC_DEPLOYMENT_NAME=myblog`
+4. Execute `./utils/00-create-sp.sh $STATIC_DEPLOYMENT_NAME`, save contents of the json into AZ_SP_CREDENTIALS GitHub actions secrets.
+5. Deploy infra:
 
 ```bash
-az deployment sub create --name staticsite01 \
- --location westus \
- --template-file main.bicep \
- --parameters resourceGroupName=rg-staticsite01 resourceGroupLocation=westus 
+cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME
 ```
 
-Existing:
+or, you can define your globally unique name
 
 ```bash
-az deployment sub create --name apmain2 \
+cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME myblogstatic
+```
+
+If you have an existing web plan, you need to do it in the difficult way:
+
+```bash
+az deployment sub create --name $STATIC_DEPLOYMENT_NAME \
  --location westus \
  --template-file main.bicep \
- --parameters resourceGroupName=rg-staticap3 resourceGroupLocation=westus hostingPlanCreate=existing hostingPlanName=WestUSLinuxDynamicPlan hostingPlanResourceGroupName=ducks
+ --parameters resourceGroupName=rg-$STATIC_DEPLOYMENT_NAME resourceGroupLocation=westus \
+ hostingPlanCreate=existing hostingPlanName=<myplanname> hostingPlanResourceGroupName=<myresourcegroup>
 ```
 
 6. Build config
@@ -41,8 +43,9 @@ az deployment sub create --name apmain2 \
 ./utils/02-setup.sh apmain2 && ./utils/03-build-config.sh
 ```
 
-5. Open github workflow actions and deploy functions
+7. Open github workflow actions and deploy functions. 
+8. Open github workflow and deploy your blog.
 
-6. Follow your blog in the fediverse.
+9. Follow your blog in the fediverse, information about the blog is on the README.md, config.json and deploy.json files.
 
-7. Open github workflow and add your post!
+10. Add a post into `blog/content/post`, make sure it merges to main, either with a PR or directly.

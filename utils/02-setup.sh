@@ -43,6 +43,9 @@ echo "Generating hugo.toml"
 echo "baseURL='${STATIC_WEB_URL}'" > "$script_dir/../blog/hugo.toml"
 cat "$script_dir/templates/hugo.toml" >> "$script_dir/../blog/hugo.toml"
 
+cat "$script_dir/templates/README.md" > "$script_dir/../README.md"
+echo "\nThis blog can be reached at [${STATIC_WEB_URL}](${STATIC_WEB_URL})" >> "$script_dir/../README.md"
+
 echo "Commiting"
 
 git add $script_dir/..
