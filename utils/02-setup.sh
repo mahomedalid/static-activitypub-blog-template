@@ -8,8 +8,11 @@ if [ ! -e "private.pem" ]; then
     openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 fi
 
-PUBLIC_KEY=$(cat public.pem | tr -d '\n')
-PRIVATE_KEY=$(cat private.pem | tr -d '\n')
+PUBLIC_KEY=$(cat public.pem)
+PRIVATE_KEY=$(cat private.pem)
+
+echo $PUBLIC_KEY
+echo $PRIVATE_KEY
 
 echo "Retrieving config values from Azure deployment"
 
@@ -45,7 +48,7 @@ jq -n --argfile config $config_file --arg publicKey "$PUBLIC_KEY" -f "$script_di
 
 echo "Configuring inbox"
 
-actorKeyId="${STATIC_WEB_URL}blog#main-key"
+actorKeyId="${STATIC_WEB_URL}socialweb/actor#main-key"
 
 az functionapp config appsettings set --name $AZURE_FUNCTION_NAME \
      --resource-group $RESOURCE_GROUP --settings BaseDomain="$STATIC_WEB_URL" ActorName=blog ActorKeyId="$actorKeyId"
@@ -55,6 +58,6 @@ az functionapp config appsettings set --name $AZURE_FUNCTION_NAME \
 
 echo "Commiting"
 
-git add .
+git add $script_dir/..
 git commit -am "Initial setup"
 git push -u origin HEAD
