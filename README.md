@@ -38,18 +38,11 @@ az deployment sub create --name apmain2 \
 6. Build config
 
 ```bash
-./utils/02-setup.sh apmain2
+./utils/02-setup.sh apmain2 && ./utils/03-build-config.sh
 ```
-
 
 5. Open github workflow actions and deploy functions
 
+6. Follow your blog in the fediverse.
 
-TODO:
-
-CONF 
-
-
-Auto create static/socialweb/actor
--- NO for MVP = Auto create static/socialweb/featured
-Auto create private keys
+7. Open github workflow and add your post!
