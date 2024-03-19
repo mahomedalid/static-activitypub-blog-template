@@ -17,4 +17,14 @@ for file in $socialweb_dir/*; do
     az storage blob update -c "\$web" -n "$filePath" --content-type "application/activity+json;" --account-key "$AZURE_STORAGE_KEY" --account-name "$AZURE_STORAGE_ACCOUNT"
 done
 
+for file in $socialweb_dir/notes/*; do
+    filePath="${file#$prefix}"
+    filePath="${filePath#?}"
+
+    echo $filePath
+    
+    # Use Azure CLI to set content type
+    az storage blob update -c "\$web" -n "$filePath" --content-type "application/activity+json;" --account-key "$AZURE_STORAGE_KEY" --account-name "$AZURE_STORAGE_ACCOUNT"
+done
+
 #az afd endpoint purge ...

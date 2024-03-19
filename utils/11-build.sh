@@ -8,9 +8,8 @@ config_file="$script_dir/../config.json"
 
 # Read values from config.json
 baseDomain=$(jq -r '.baseDomain' $config_file)
-actorName=$(jq -r '.actorName' $config_file)
 authorUsername=$(jq -r '.authorUsername' $config_file)
-siteActorUri="${baseDomain}${actorName}"
+siteActorUri="${baseDomain}socialweb/actor"
 
 blog_dir=$(cd "$script_dir/../blog" && pwd)
 
@@ -20,6 +19,6 @@ Rss2Outbox --rssPath public/index.xml \
     --staticPath static \
     --authorUsername "\\$authorUsername" \
     --siteActorUri $siteActorUri \
-    --domain $baseDomain
+    --domain "${baseDomain%/}"
 hugo
 popd

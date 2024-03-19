@@ -12,11 +12,9 @@ RESOURCE_GROUP=$(cat $DEPLOY_FILE  | jq '.resourceGroupName' -r)
 
 AZ_FUNCTIONS_SETTINGS=$(az functionapp config appsettings list --name $AZURE_FUNCTION_NAME --resource-group $RESOURCE_GROUP)
 
-ACTIVITYPUB_DOTNET_PRIVATEKEY=$(echo $AZ_FUNCTIONS_SETTINGS | jq -r '.[] | select(.name == "ActorPrivatePEMKey").value')
-ACTIVITYPUB_DOTNET_KEYID=$(echo $AZ_FUNCTIONS_SETTINGS | jq -r '.[] | select(.name == "ActorKeyId").value')
-ACTIVITYPUB_DOTNET_STORAGE_CONNECTIONSTRING=$(echo $AZ_FUNCTIONS_SETTINGS | jq -r '.[] | select(.name == "CoreStorageConnection").value')
-
-exit
+export ACTIVITYPUB_DOTNET_PRIVATEKEY=$(echo $AZ_FUNCTIONS_SETTINGS | jq -r '.[] | select(.name == "ActorPrivatePEMKey").value')
+export ACTIVITYPUB_DOTNET_KEYID=$(echo $AZ_FUNCTIONS_SETTINGS | jq -r '.[] | select(.name == "ActorKeyId").value')
+export ACTIVITYPUB_DOTNET_STORAGE_CONNECTIONSTRING=$(echo $AZ_FUNCTIONS_SETTINGS | jq -r '.[] | select(.name == "CoreStorageConnection").value')
 
 for file in $NOTES_DIR/*; do
     echo $file
