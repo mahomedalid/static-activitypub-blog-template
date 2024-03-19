@@ -4,7 +4,7 @@
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Read values from config.json
-config_file="$script_dir/config.json"
+config_file="$script_dir/../config.json"
 
 # Read values from config.json
 baseDomain=$(jq -r '.baseDomain' $config_file)
