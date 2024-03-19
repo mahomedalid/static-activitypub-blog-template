@@ -213,3 +213,5 @@ resource deploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
 }
 
 output staticWebsiteUrl string = storageAccount.properties.primaryEndpoints.web
+output azureFunctionsName string = functionApp.name
+output azureFunctionsEndpoint string = functionApp.properties.defaultHostName

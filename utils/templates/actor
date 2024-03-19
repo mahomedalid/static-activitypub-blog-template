@@ -1,0 +1,40 @@
+
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": ($config.baseDomain + $config.actorName),
+    "type": "Person",
+    "following": ($config.baseDomain + "socialweb/following"),
+    "followers": ($config.baseDomain + "socialweb/followers"),
+    "inbox": $config.inboxEndpoint,
+    "outbox": ($config.baseDomain + "socialweb/outbox"),
+    "preferredUsername": $config.actorName,
+    "name": "My blog name",
+    "summary": "A new static site ready for the Fediverse!",
+    "url": $config.baseDomain,
+    "discoverable": true,
+    "memorial": false,
+    "icon": {
+      "type": "Image",
+      "mediaType": "image/png",
+      "url": ($config.baseDomain + "images/avatar.png")
+    },
+    "image": {
+      "type": "Image",
+      "mediaType": "image/png",
+      "url": ($config.baseDomain + "images/avatar.png")
+    },
+    "publicKey": {
+      "@context": "https://w3id.org/security/v1",
+      "@type": "Key",
+      "id": ($config.baseDomain + $config.actorName + "#main-key"),
+      "owner": ($config.baseDomain + $config.actorName),
+      "publicKeyPem": $publicKey
+    },
+    "attachment": [
+      {
+        "type": "PropertyValue",
+        "name": "Blog",
+        "value": ("<a href=\"" + $config.baseDomain + "\" target=\"_blank\" rel=\"nofollow noopener noreferrer me\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"\">Blog</span><span class=\"invisible\"></span></a>")
+      }
+    ]
+  }

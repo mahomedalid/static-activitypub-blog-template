@@ -32,3 +32,8 @@ module functionsDeployment 'functions.bicep' = {
   }
   scope: resourceGroup
 }
+
+output staticWebsiteUrl string = functionsDeployment.outputs.staticWebsiteUrl
+output azureFunctionsEndpoint string = functionsDeployment.outputs.azureFunctionsEndpoint
+output azureFunctionsName string = functionsDeployment.outputs.azureFunctionsName
+output resourceGroupName string = resourceGroupName

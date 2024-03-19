@@ -22,7 +22,8 @@ subscriptionId=$(az account show --query id --output tsv)
 
 # Create a service principal with the contributor role
 echo "Creating Service Principal ..."
+
 spAuthInfo=$(az ad sp create-for-rbac --name $appName --role contributor --scopes /subscriptions/$subscriptionId --json-auth)
 
 # Display the results
-echo $spAuthInfo | jq   --compact-output
+echo $spAuthInfo | jq --compact-output

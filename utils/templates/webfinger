@@ -1,0 +1,13 @@
+{  
+    "subject": ("acct:" + $config.actorName + ( $config.baseDomain | sub("^https://"; "@") | sub("/"; ""))),
+    "aliases": [
+        ($config.baseDomain + $config.actorName)
+    ],
+    "links": [
+      {
+        "rel": "self",
+        "type": "application/activity+json",
+        "href": ($config.baseDomain + $config.actorName)
+      }
+    ]
+}
