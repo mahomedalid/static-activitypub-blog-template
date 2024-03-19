@@ -18,13 +18,13 @@ Template to create a static website blog activitypub enabled powered by Azure.
 5. Deploy infra:
 
 ```bash
-cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME
+cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME && cd ..
 ```
 
 or, you can define your globally unique name
 
 ```bash
-cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME myblogstatic
+cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME myblogstatic && cd ..
 ```
 
 If you have an existing web plan, you need to do it in the difficult way:
@@ -40,7 +40,7 @@ az deployment sub create --name $STATIC_DEPLOYMENT_NAME \
 6. Build config
 
 ```bash
-./utils/02-setup.sh apmain2 && ./utils/03-build-config.sh
+./utils/02-setup.sh $STATIC_DEPLOYMENT_NAME && ./utils/03-build-config.sh
 ```
 
 7. Open github workflow actions and deploy functions. 
