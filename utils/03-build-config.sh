@@ -21,9 +21,9 @@ echo "Generating actor file"
 
 jq -n --argfile config $CONFIG_FILE --arg publicKey "$PUBLIC_KEY" -f "$script_dir/templates/actor" > "$script_dir/../blog/static/socialweb/actor"
 
-FEDIVERSE_HOSTNAME=$(cat $CONFIG_FILE | jq '.baseDomain | sub("^https://"; "@") | sub("/"; "")')
+FEDIVERSE_HOSTNAME=$(cat $CONFIG_FILE | jq -r '.baseDomain | sub("^https://"; "@") | sub("/"; "")')
 
-echo "\nThis blog can be followed in the fediverse by @blog@$FEDIVERSE_HOSTNAME" >> "$script_dir/../README.md"
+echo -e "\nThis blog can be followed in the fediverse by @blog$FEDIVERSE_HOSTNAME" >> "$script_dir/../README.md"
 
 echo "Generating webfinger file"
 
