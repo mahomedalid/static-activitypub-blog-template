@@ -25,7 +25,7 @@ jobs:
 
     - name: 'Environment variables'
       run: |-
-        AZURE_FUNCTIONAPP_NAME=$(cat deploy.json | jq -r '.azFunc')
+        AZURE_FUNCTIONAPP_NAME=$(cat deploy.json | jq -r '.azureFunctionsName')
         echo "AZURE_FUNCTIONAPP_NAME=$AZURE_FUNCTIONAPP_NAME" >> $GITHUB_ENV
 
     - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
