@@ -21,6 +21,8 @@ resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 @description('Name of the deployment.')
 param deploymentName string = 'ap-${resourceGroupName}'
 
+param storageAccountName string = 'blog${uniqueString('${hash}${resourceGroupName}')}'
+
 module functionsDeployment 'functions.bicep' = {
   name: '${deploymentName}-${hash}'
   #disable-next-line explicit-values-for-loc-params
@@ -29,6 +31,7 @@ module functionsDeployment 'functions.bicep' = {
     hostingPlanCreate: hostingPlanCreate
     hostingPlanName: hostingPlanName
     hostingPlanResourceGroupName: hostingPlanResourceGroupName
+    storageAccountName: storageAccountName
   }
   scope: resourceGroup
 }

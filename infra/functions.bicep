@@ -46,7 +46,7 @@ param hostingPlanName string = functionAppName
 param hostingPlanResourceGroupName string = resourceGroup().name
 
 var applicationInsightsName = functionAppName
-var storageAccountName = 'st${uniqueString(resourceGroup().id)}'
+param storageAccountName string
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   name: storageAccountName

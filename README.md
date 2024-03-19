@@ -44,12 +44,6 @@ TODO:
 
 CONF 
 
-GitHub Secret - AZ_SP_CREDENTIALS
-GitHub Action Var - AZURE_FUNCTIONAPP_NAME
-Az Function config - BaseDomain -- "https://maho.dev",
-Az Function config - ActorPrivatePEMKey -- BEGIN PRIVATE KEY
-Az Function config - ActorKeyId -- "ActorKeyId": "https://maho.dev/blog#main-key"
-Az Function actor - ActorName -- blog
 
 Auto create static/socialweb/actor
 -- NO for MVP = Auto create static/socialweb/featured
