@@ -10,7 +10,7 @@ on: workflow_dispatch
 #
 # 2. Change these variables for your configuration:
 env:
-  AZURE_FUNCTIONAPP_NAME: ${{ vars.AZURE_FUNCTIONAPP_NAME }}   # set this to your function app name on Azure
+  AZURE_FUNCTIONAPP_NAME: ""
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'almost-static-activitypub/src/ActivityPubFunctions'       # set this to the path to your function app project, defaults to the repository root
   DOTNET_VERSION: '8.0.x'                   # set this to the dotnet version to use (e.g. '2.1.x', '3.1.x', '5.0.x')
   ACTIVITYPUB_DOTNET_REPO_URL: 'https://github.com/mahomedalid/almost-static-activitypub.git'
@@ -22,6 +22,11 @@ jobs:
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
+
+    - name: 'Environment variables'
+      run: |-
+        AZURE_FUNCTIONAPP_NAME=$(cat deploy.json | jq -r '.azFunc')
+        echo "AZURE_FUNCTIONAPP_NAME=$AZURE_FUNCTIONAPP_NAME" >> $GITHUB_ENV
 
     - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
       uses: actions/setup-dotnet@v3

@@ -32,11 +32,10 @@ az deployment sub create --name apmain2 \
 
 6. Build config
 
+```bash
+./utils/02-setup.sh apmain2
+```
 
-
-az deployment sub create --name apmain  --location westus2  --template-file main.bicep --parameters resourceGroupName=staticap1 resourceGroupLocation=westus2
-
-az deployment sub create --name apmain2  --location westus  --template-file main.bicep --parameters resourceGroupName=rg-staticap2 resourceGroupLocation=westus hostingPlanCreate=existing hostingPlanName=WestUSLinuxDynamicPlan hostingPlanResourceGroupName=ducks
 
 5. Open github workflow actions and deploy functions
 

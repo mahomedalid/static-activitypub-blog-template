@@ -9,8 +9,8 @@ on:
       - 'blog/**'
 
 env:
-  AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}   # set this to your function app name on Azure
-  AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}   # set this to your function app name on Azure
+  AZURE_STORAGE_ACCOUNT: ""
+  AZURE_RESOURCE_GROUP: ""
 
 jobs:
   build:
@@ -29,6 +29,13 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZ_SP_CREDENTIALS }}
+
+      - name: 'Environment variables'
+        run: |-
+          AZURE_RESOURCE_GROUP=$(cat deploy.json | jq -r '.resourceGroupName')
+          AZURE_STORAGE_ACCOUNT=$( az storage account list --resource-group $AZURE_RESOURCE_GROUP --query "[0].name" -o tsv)
+          echo "AZURE_STORAGE_ACCOUNT=$AZURE_STORAGE_ACCOUNT" >> $GITHUB_ENV
+          echo "AZURE_RESOURCE_GROUP=$AZURE_RESOURCE_GROUP" >> $GITHUB_ENV
 
       - name: Download Almost Static ActivityPub Utilities
         run: |
