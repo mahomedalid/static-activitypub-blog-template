@@ -4,13 +4,18 @@ Template to create a static website blog activitypub enabled powered by Azure.
 
 ## Getting Started
 
+## Pre-requisites
+
+1. An Azure subscription, all the resources in this template are in the free tier. See [Azure Free Tier](https://azure.microsoft.com/en-us/free/) for more information.
+1. Use this template to create a new repository. See [Creating a Repository From a Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for more information.
+
 ### Method 1. GitHub Codespaces
 
-1. Create a project based in this template.
-2. Open a GitHub Codespace.
-3. `az login` or `az login --use-device-code`
-4. Execute `./utils/00-create-sp.sh`, save contents into AZ_SP_CREDENTIALS
-5. Deploy infra:
+1. Open/create a GitHub Codespace in this repository. It will take a few minutes.
+2. In the terminal window execute `az login` or `az login --use-device-code` to login in Azure.
+3. 
+5. Execute `./utils/00-create-sp.sh`, save contents into AZ_SP_CREDENTIALS
+6. Deploy infra:
 
 Basic: 
 
