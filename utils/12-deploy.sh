@@ -9,6 +9,7 @@ hugo deploy --maxDeletes 0 --logLevel debug
 
 for file in $socialweb_dir/*; do
     filePath="${file#$prefix}"
+    filePath="${filePath#?}"
 
     echo $filePath
     
