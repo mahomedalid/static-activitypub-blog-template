@@ -1,7 +1,17 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://myblogstatic.z22.web.core.windows.net/'
 languageCode = 'en-us'
 title = 'My New Hugo Site enabled for the Fediverse!'
 theme = 'PaperMod'
+paginate = 5
+
+buildFuture = true
+buildExpired = true
+
+[params]
+  
+env = production
+title = 'My New Hugo Site enabled for the Fediverse!'
+author = Me
 
 [[deployment.targets]]
 name = "azure"
