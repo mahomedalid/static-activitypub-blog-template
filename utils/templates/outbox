@@ -1,0 +1,8 @@
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "id": ($config.baseDomain + "socialweb/outbox"),
+  "type": "OrderedCollection",
+  "summary": "Recent content on My New Hugo Site",
+  "totalItems": 0,
+  "orderedItems": []
+}
