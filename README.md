@@ -14,7 +14,7 @@ Template to create a static website blog activitypub enabled powered by Azure.
 1. Open a GitHub Codespace.
 2. `az login` or `az login --use-device-code`
 3. Give the deployment a meaningful name `export STATIC_DEPLOYMENT_NAME=myblog`
-4. Execute `./utils/00-create-sp.sh $STATIC_DEPLOYMENT_NAME`, save contents of the json into AZ_SP_CREDENTIALS GitHub actions secrets.
+4. Execute `./utils/01-create-sp.sh $STATIC_DEPLOYMENT_NAME`, save contents of the json into AZ_SP_CREDENTIALS GitHub actions secrets.
 5. Deploy infra:
 
 ```bash
