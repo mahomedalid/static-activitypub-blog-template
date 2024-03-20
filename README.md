@@ -61,6 +61,10 @@ az deployment sub create --name $STATIC_DEPLOYMENT_NAME \
 3. Modify the `config.json` file updating `baseDomain`. setting of the `hugo.toml` file. Execute `utils/03-build-config.sh`.
 4. Re-deploy your blog using GitHub actions.
 
+### Themes and configuration
+
+This static site is a fully featured, not customized `hugo` site. Check `https://github.com/gohugoio/hugo/` for customization and themes installation.
+
 ## Contribute
 
 I hope to see people forking this for Vercel, AWS, GCP and other implementations of the Inbox!
