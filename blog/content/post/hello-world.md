@@ -2,5 +2,7 @@
 title = 'Hello Fediverse!'
 date = 2024-03-17T18:27:54Z
 draft = true
+tags=["activitypub", "fediverse"]
 +++
-Hello Fediverse!
+
+This static site is alive and activitpub enabled!

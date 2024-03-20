@@ -77,6 +77,31 @@ On mastodon, if you do not follow your account before creating posts, these won'
 
 This static site is based on a fully featured, uncustomized `hugo` site. Explore [Hugo](https://github.com/gohugoio/hugo/) for customization and theme installation.
 
+However, there are 4 files who were changed to be able to include comments and subscribe features:
+
+This can be copy pasted to a new theme:
+
+* `themes/PaperMod/layouts/partials/comments.html`
+* `themes/PaperMod/layouts/partials/extend_footer.html`
+
+Basic css was included vanilla with this:
+
+```html
+<link crossorigin="anonymous" href="/css/custom.css" rel="preload stylesheet" as="style">
+```
+
+directly in the head (`themes/PaperMod/layouts/partials/head.html`).
+
+There are better ways to do it, but I will let you go as complex as you want.
+
+I also added a subscribe button into the header (`themes/PaperMod/layouts/partials/header.html`)  because PaperMod was messing with the `href`:
+
+```html
+<li><input type="button" onclick="showSubscribeModal();" value="Subscribe" /></li>
+```
+
+But it does not need to be a button, or be on the navigation bar, just make sure it executes `showSubscribeModal();`.
+
 ### Custom Modifications
 
 Refer to the [ActivityPub blog series](https://maho.dev/2024/02/a-guide-to-implement-activitypub-in-a-static-site-or-any-website/) for in-depth explanations on bringing ActivityPub to a static site or any website.

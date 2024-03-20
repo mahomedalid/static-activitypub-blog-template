@@ -25,6 +25,8 @@ FEDIVERSE_HOSTNAME=$(cat $CONFIG_FILE | jq -r '.baseDomain | sub("^https://"; "@
 
 echo -e "\nThis blog can be followed in the fediverse by @blog$FEDIVERSE_HOSTNAME" >> "$script_dir/../README.md"
 
+sed -i "s/^fediverseHandle=.*/fediverseHandle='@blog$FEDIVERSE_HOSTNAME'/" "$script_dir/../blog/hugo.toml"
+
 echo "Generating webfinger file"
 
 jq -n --argfile config $CONFIG_FILE --arg publicKey "$PUBLIC_KEY" -f "$script_dir/templates/webfinger" > "$script_dir/../blog/static/.well-known/webfinger"
