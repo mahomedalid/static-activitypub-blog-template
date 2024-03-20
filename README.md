@@ -12,6 +12,9 @@ Create a static website blog with ActivityPub integration, powered by Hugo and A
 
 ### Method 1: GitHub Codespaces
 
+**Do not be overwhelmed by these instructions, most of them are just copy paste, and everything should be installed already.
+I decided to not hide the steps under a big one script, and create modular steps instead, in case someone wants to play and extend this repo.**
+
 1. Launch a GitHub Codespace.
 2. Run `az login --use-device-code` to login to Azure. If you cannot use device code use `az login`, copy the redirect url, and use curl/wget to hit in in a new terminal.
 3. Assign a meaningful name to your deployment by executing `export STATIC_DEPLOYMENT_NAME=myblog`. Do not stress about it, it is just a reference if you have more than one deployment in Azure.
