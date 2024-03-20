@@ -1,74 +1,83 @@
-# ActivityPub-Enabled Static Site 
+# ActivityPub-Enabled Static Site Template
 
-Template to create a static website blog activitypub enabled powered by Azure.
+Create a static website blog with ActivityPub integration, powered by Hugo and Azure.
 
 ## Getting Started
 
-## Pre-requisites
+### Prerequisites
 
-1. An Azure subscription, all the resources in this template are in the free tier. See [Azure Free Tier](https://azure.microsoft.com/en-us/free/) for more information.
-1. Use this template to create a new repository. See [Creating a Repository From a Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) for more information.
+1. You'll need an Azure subscription, but don't worry—all the resources in this template fall under the free tier. For more information, check out the [Azure Free Tier](https://azure.microsoft.com/en-us/free/).
+2. In the easier route you also need a GitHub account, but also you can run all the bash scripts needs to run in your computer, preferably a Linux box with bash, jq and az cli installed.
+3. You own repo, it can be private or public, it does not matter, no private keys or secrets are pushed as files. Learn how to do this from [Creating a Repository From a Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 
-### Method 1. GitHub Codespaces
+### Method 1: GitHub Codespaces
 
-1. Open a GitHub Codespace.
-2. `az login` or `az login --use-device-code`
-3. Give the deployment a meaningful name `export STATIC_DEPLOYMENT_NAME=myblog`
-4. Execute `./utils/01-create-sp.sh $STATIC_DEPLOYMENT_NAME`, save contents of the json into AZ_SP_CREDENTIALS GitHub actions secrets.
-5. Deploy infra:
+1. Launch a GitHub Codespace.
+2. Run `az login --use-device-code` to login to Azure. If you cannot use device code use `az login`, copy the redirect url, and use curl/wget to hit in in a new terminal.
+3. Assign a meaningful name to your deployment by executing `export STATIC_DEPLOYMENT_NAME=myblog`. Do not stress about it, it is just a reference if you have more than one deployment in Azure.
+4. Run `./utils/01-create-sp.sh $STATIC_DEPLOYMENT_NAME` and save the JSON contents into the GitHub Actions secrets as AZ_SP_CREDENTIALS. **Important: just the JSON content, no other output, and this is a secret.** Take care of it.
+5. Deploy infrastructure:
 
 ```bash
 cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME && cd ..
 ```
 
-or, you can define your globally unique name
+The storage account should be unique in the whole Azure, that script will auto-generate an ugly, but unique name. Alternatively, you can try to suply your globally unique name (ex. mapachestatic):
 
 ```bash
-cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME myblogstatic && cd ..
+cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME mapachestatic && cd ..
 ```
 
-If you have an existing web plan, you need to do it in the difficult way:
+> Note: The script will use a free consumption web plan (SKU Y1), if you want to use an existing web plan, you'll need to take a more challenging route, for example:
 
-```bash
-az deployment sub create --name $STATIC_DEPLOYMENT_NAME \
- --location westus \
- --template-file main.bicep \
- --parameters resourceGroupName=rg-$STATIC_DEPLOYMENT_NAME resourceGroupLocation=westus \
- hostingPlanCreate=existing hostingPlanName=<myplanname> hostingPlanResourceGroupName=<myresourcegroup>
-```
+  ```bash
+  LOCATION=westus
+  az deployment sub create --name $STATIC_DEPLOYMENT_NAME \
+   --location $LOCATION \
+   --template-file main.bicep \
+   --parameters resourceGroupName=rg-$STATIC_DEPLOYMENT_NAME resourceGroupLocation=$LOCATION \
+   hostingPlanCreate=existing hostingPlanName=<myplanname> hostingPlanResourceGroupName=<myresourcegroup>
+  ```
 
-6. Build config
+6. Build the config:
 
 ```bash
 ./utils/02-setup.sh $STATIC_DEPLOYMENT_NAME && ./utils/03-build-config.sh
 ```
 
-7. Open github workflow actions and deploy functions. 
-8. Open github workflow and deploy your blog.
+This will generate and push two files in the repo: `deploy.json` and `config.json`. It will also update the README.md with a working link to your new static site!
 
-9. Follow your blog in the fediverse, information about the blog is on the README.md, config.json and deploy.json files.
+7. Open GitHub Actions and run manually the workflow to deploy functions: *Deploy ActivityPub Inbox to Azure Function App*.
+8. Open GitHub Actions and run manually the workflow to deploy your blog: *Build and Deploy Blog*. To dot not worry if there is a previous failed execution, this time it should work.
 
-10. Update the setting `authorUsername` in the `config.json` file, this is another author account in case you have a personal fediverse account.
+9. Join the fediverse by following your blog. You can find information about the blog in the README.md, config.json, and deploy.json files. It is usually @blog@<yoursiteurl>.
+On mastodon, if you do not follow your account before creating posts, these won't show in the timeline.
 
-11. Add a post into `blog/content/post`, make sure it merges to main, either with a PR or directly.
+11. Update the setting `authorUsername` in the `config.json` file. This is another author account in case you have a personal fediverse account, and gets mentioned in each post. 
 
-## Next steps
+12. Add a post into `blog/content/post`. There is a template you can copy paste in `blog/content/_template.md`. Ensure it merges to the main branch, either with a PR or directly. Do not forget to mark it as `draft=false`!
+
+> After a few minutes the post should show in the site url, and in the fediverse.
+
+14. Give me [feedback](https://github.com/mahomedalid/static-activitypub-blog-template/issues/new), follow me in the fediverse ([@mapache@hachyderm.io](https://hachyderm.io/@mapache)), subscribe to [my blog](https://maho.dev), buy me a beer, or share the repo with a close friend or the Fediverse. Anything helps.
+
+## Next Steps
 
 ### Custom Domain
 
 1. Configure your domain: [Custom domains with Azure Static Web Apps](https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain).
-2. Modify the `baseUrl` setting of the `hugo.toml` file.
-3. Modify the `config.json` file updating `baseDomain`. setting of the `hugo.toml` file. Execute `utils/03-build-config.sh`.
-4. Re-deploy your blog using GitHub actions.
+2. Modify the `baseUrl` setting in the `hugo.toml` file.
+3. Update the `baseDomain` setting in the `config.json` file. Execute `utils/03-build-config.sh`.
+4. Re-deploy your blog using GitHub Actions.
 
-### Themes and configuration
+### Themes and Configuration
 
-This static site is a fully featured, not customized `hugo` site. Check `https://github.com/gohugoio/hugo/` for customization and themes installation.
+This static site is based on a fully featured, uncustomized `hugo` site. Explore [Hugo](https://github.com/gohugoio/hugo/) for customization and theme installation.
 
-### Custom modifications
+### Custom Modifications
 
-Check the [ActivityPub blog series to bring a static site or any website to the fediverse](https://maho.dev/2024/02/a-guide-to-implement-activitypub-in-a-static-site-or-any-website/), where there are deep explanations of everything under the hood.
+Refer to the [ActivityPub blog series](https://maho.dev/2024/02/a-guide-to-implement-activitypub-in-a-static-site-or-any-website/) for in-depth explanations on bringing ActivityPub to a static site or any website.
 
 ## Contribute
 
-I hope to see people forking this for Vercel, AWS, GCP and other implementations of the Inbox!
+We encourage forking this template for Vercel, AWS, GCP, and other implementations. Let's expand the Inbox together!
