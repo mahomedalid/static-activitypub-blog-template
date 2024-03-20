@@ -39,7 +39,7 @@ cd infra && ./01-deploy.sh $STATIC_DEPLOYMENT_NAME mapachestatic && cd ..
    --location $LOCATION \
    --template-file main.bicep \
    --parameters resourceGroupName=rg-$STATIC_DEPLOYMENT_NAME resourceGroupLocation=$LOCATION \
-   hostingPlanCreate=existing hostingPlanName=<myplanname> hostingPlanResourceGroupName=<myresourcegroup>
+   hostingPlanCreate=existing hostingPlanName=_myplanname_ hostingPlanResourceGroupName=_myresourcegroup_
   ```
 
 6. Build the config:
@@ -53,7 +53,7 @@ This will generate and push two files in the repo: `deploy.json` and `config.jso
 7. Open GitHub Actions and run manually the workflow to deploy functions: *Deploy ActivityPub Inbox to Azure Function App*.
 8. Open GitHub Actions and run manually the workflow to deploy your blog: *Build and Deploy Blog*. To dot not worry if there is a previous failed execution, this time it should work.
 
-9. Join the fediverse by following your blog. You can find information about the blog in the README.md, config.json, and deploy.json files. It is usually @blog@<yoursiteurl>.
+9. Join the fediverse by following your blog. You can find information about the blog in the README.md, config.json, and deploy.json files. It is usually @blog@_yoursiteurl_
 On mastodon, if you do not follow your account before creating posts, these won't show in the timeline.
 
 11. Update the setting `authorUsername` in the `config.json` file. This is another author account in case you have a personal fediverse account, and gets mentioned in each post. 
