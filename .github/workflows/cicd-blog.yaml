@@ -20,6 +20,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Check for deploy.json existence
+        run: |
+          if [ ! -f "deploy.json" ]; then
+            echo "Error: deploy.json not found. Stopping the workflow."
+            exit 1
+          fi
+          if [ ! -f "config.json" ]; then
+            echo "Error: config.json not found. Stopping the workflow."
+            exit 1
+          fi
+
       - name: Install Hugo
         working-directory: ./.devcontainer/
         run: |-
@@ -33,7 +44,7 @@ jobs:
       - name: 'Environment variables'
         run: |-
           AZURE_RESOURCE_GROUP=$(cat deploy.json | jq -r '.resourceGroupName')
-          AZURE_STORAGE_ACCOUNT=$( az storage account list --resource-group $AZURE_RESOURCE_GROUP --query "[0].name" -o tsv)
+          AZURE_STORAGE_ACCOUNT=$(az storage account list --resource-group $AZURE_RESOURCE_GROUP --query "[0].name" -o tsv)
           echo "AZURE_STORAGE_ACCOUNT=$AZURE_STORAGE_ACCOUNT" >> $GITHUB_ENV
           echo "AZURE_RESOURCE_GROUP=$AZURE_RESOURCE_GROUP" >> $GITHUB_ENV
 
