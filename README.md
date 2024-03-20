@@ -65,6 +65,10 @@ az deployment sub create --name $STATIC_DEPLOYMENT_NAME \
 
 This static site is a fully featured, not customized `hugo` site. Check `https://github.com/gohugoio/hugo/` for customization and themes installation.
 
+### Custom modifications
+
+Check the [ActivityPub blog series to bring a static site or any website to the fediverse](https://maho.dev/2024/02/a-guide-to-implement-activitypub-in-a-static-site-or-any-website/), where there are deep explanations of everything under the hood.
+
 ## Contribute
 
 I hope to see people forking this for Vercel, AWS, GCP and other implementations of the Inbox!
