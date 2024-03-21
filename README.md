@@ -16,7 +16,7 @@ Create a static website blog with ActivityPub integration, powered by Hugo and A
 **Do not be overwhelmed by these instructions, most of them are just copy paste, and everything should be installed already.
 I decided to not hide the steps under a big one script, and create modular steps instead, in case someone wants to play and extend this repo.**
 
-#### Check the video!
+#### Check the demo video!
 
 [![ActivityPub-Enabled Static Sites in 10 min](https://i.ytimg.com/vi/5A8YS6YhHuQ/maxresdefault.jpg)]([https://www.youtube.com/watch?v=5A8YS6YhHuQ](https://www.youtube.com/embed/5A8YS6YhHuQ?si=UvJnaraOJwqPbEfg&amp;start=175) "ActivityPub-Enabled Static Sites in 10 min")    
 
