@@ -1,3 +1,67 @@
 {{- /* Footer custom content area start */ -}}
-{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+<script>
+    var blogActor = '{{ .Param "fediverseHandle" }}';
+
+    var showSubscribeModal = function () {
+      var modal = document.getElementById("subscribe-modal");
+      modal.style.display = "block";
+    };
+
+    var subscribeInMastodon = function () {
+      var mastodonUrl = document.getElementById('subscribe-mastodon-url-host').value;
+
+      if (mastodonUrl == undefined || mastodonUrl == '') {
+        document.getElementById('error-subscribe').style.display = 'block';
+        document.getElementById('error-subscribe').innerText = 'Please enter your Mastodon server URL. For example: techhub.social';
+        return;
+      }
+
+      // validate that mastodonUrl is a valid domain with a dot
+      if (!mastodonUrl.includes('.')) {
+        document.getElementById('error-subscribe').style.display = 'block';
+        document.getElementById('error-subscribe').innerText = 'Please enter a valid Mastodon server URL. For example: techhub.social';
+        return;
+      }
+      var mastodonUrl = document.getElementById('subscribe-mastodon-url-host').value;
+
+      if (!mastodonUrl.startsWith('http')) {
+        mastodonUrl = "https:\/\/" + mastodonUrl;
+      }
+
+      document.location.href = mastodonUrl + '/authorize_interaction?uri=' + encodeURIComponent(blogActor);
+    };
+
+    var closeBtnOnClick = function () {
+      var modal = document.getElementById("subscribe-modal");
+      modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        var modal = document.getElementById("subscribe-modal");
+        modal.style.display = "none";
+      }
+    }
+</script>
+
+<div id="subscribe-modal" class="modal" style="display: none" >
+<div class="modal-content">
+  <span id="close-modal" class="close" onclick="closeBtnOnClick();">&times;</span>
+  <h3>Subscribe</h3>
+  <p>
+    You can subscribe to this blog by following with any existing account on any Mastodon server.
+  </p>
+  <p>
+    <strong>Where is your account hosted?</strong>
+  </p>
+  <form onsubmit="subscribeInMastodon(); return false;">
+    <span id="error-subscribe" style="display: none; color: red;">&nbsp;</span>
+    <input type="text" class="mastodon-url-input" id="subscribe-mastodon-url-host" placeholder="ex. mastodon.social">
+    <input class="button-9" type="submit" value="Take me home!" onclick="replyToMastodon();">
+  </form>
+  <p></p>
+  <p>Not on Mastodon? <a class="join-mastodon-link" href="https://joinmastodon.org/">Join now!</a></p>
+</div>
+</div>
 {{- /* Footer custom content area end */ -}}
