@@ -16,9 +16,9 @@ Create a static website blog with ActivityPub integration, powered by Hugo and A
 **Do not be overwhelmed by these instructions, most of them are just copy paste, and everything should be installed already.
 I decided to not hide the steps under a big one script, and create modular steps instead, in case someone wants to play and extend this repo.**
 
-#### Check the demo video!
+#### Check the demo video with detailed instructions!
 
-[![ActivityPub-Enabled Static Sites in 10 min](https://i.ytimg.com/vi/5A8YS6YhHuQ/maxresdefault.jpg)]([https://www.youtube.com/watch?v=5A8YS6YhHuQ](https://www.youtube.com/embed/5A8YS6YhHuQ?si=UvJnaraOJwqPbEfg&amp;start=175) "ActivityPub-Enabled Static Sites in 10 min")    
+[![ActivityPub-Enabled Static Sites in 10 min](https://i.ytimg.com/vi/ye39FHlAGPE/maxresdefault.jpg)]([https://www.youtube.com/watch?v=ye39FHlAGPE](https://www.youtube.com/embed/ye39FHlAGPE?si=ye39FHlAGPE&amp;start=175) "ActivityPub-Enabled Static Sites in 10 min")    
 
 1. Launch a GitHub Codespace from your repository. See [Creating a Codespace for your repository](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository). It would have all the dependencies required and installed. Your first drink sip is here.
 2. Run `az login --use-device-code` to login to Azure. If you cannot use device code use `az login`, copy the redirect url, and use curl/wget to hit in in a new terminal.
