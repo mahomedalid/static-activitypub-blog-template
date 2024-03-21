@@ -67,7 +67,7 @@ On mastodon, if you do not follow your account before creating posts, these won'
 
 > After a few minutes the post should show in the site url, and in the fediverse.
 
-14. Give me [feedback](https://github.com/mahomedalid/static-activitypub-blog-template/issues/new), follow me in the fediverse ([@mapache@hachyderm.io](https://hachyderm.io/@mapache)), subscribe to [my blog](https://maho.dev) or [my substack](https://mahopacheco.substack.com/), [watch a video on my channel](https://www.youtube.com/@TheRaccoonBytes), buy me a beer, plant a tree, take your wife to dinner, foster a stray dog, or share the repo with a close friend or the Fediverse. Anything helps. Love wins.
+14. Give me [feedback](https://github.com/mahomedalid/static-activitypub-blog-template/issues/new), follow me in the fediverse ([@mapache@hachyderm.io](https://hachyderm.io/@mapache)), subscribe to [my blog](https://maho.dev) or [my substack](https://mahopacheco.substack.com/), [watch a video on my channel](https://www.youtube.com/@TheRaccoonBytes), buy me a beer, plant a tree, take your wife to dinner, foster a stray dog, or share the repo with a close friend or the Fediverse. Anything helps. Love wins. Beer happens. The world is dying.
 
 ## Next Steps
 
