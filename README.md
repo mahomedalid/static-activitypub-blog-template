@@ -116,3 +116,5 @@ Refer to the [ActivityPub blog series](https://maho.dev/2024/02/a-guide-to-imple
 ## Contribute
 
 We encourage forking this template for Vercel, AWS, GCP, and other implementations. Let's expand the Inbox together!
+
+By "we" I mean me. I hope others join eventually.
