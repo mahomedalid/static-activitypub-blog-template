@@ -13,8 +13,12 @@ Create a static website blog with ActivityPub integration, powered by Hugo and A
 
 ### Method 1: GitHub Codespaces
 
-**Do not be overwhelmed by these instructions, most of them are just copy paste, and everything should be installed already.
-I decided to not hide the steps under a big one script, and create modular steps instead, in case someone wants to play and extend this repo.**
+> [!IMPORTANT]
+> Do not be overwhelmed by these instructions, most of them are just copy paste, and everything should be installed already.
+>
+> I decided to not hide the steps under a big one script, and create modular steps instead, in case someone wants to play and extend this repo.
+> 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/mahomedalid/static-activitypub-blog-template?quickstart=1)
 
 #### Check the demo video with detailed instructions!
 
