@@ -10,6 +10,18 @@ Create a static website blog with ActivityPub integration, powered by Hugo and A
 2. In the easier route you also need a GitHub account, but also you can run all the bash scripts in your computer, you would need a Linux box with bash, jq and az cli installed. And a bunch of figure it out.
 3. Your own repo based in this template. It can be private or public, it does not matter, no private keys or secrets are pushed as files. Learn how to do this from [Creating a Repository From a Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 4. A drink, either a beer, tea, coffee, water. Hydratation is important, and there are a few steps that take more than one minute.
+## 🌏  Open in the Cloud 
+Click any of the buttons below to start a new development environment to demo or contribute to the codebase without having to install anything on your machine:
+
+[![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://vscode.dev/github/mahomedalid/static-activitypub-blog-template)
+[![Open in Glitch](https://img.shields.io/badge/Open%20in-Glitch-blue?logo=glitch)](https://glitch.com/edit/#!/import/github/mahomedalid/static-activitypub-blog-template)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/mahomedalid/static-activitypub-blog-template)
+[![Edit in Codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mahomedalid/static-activitypub-blog-template)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mahomedalid/static-activitypub-blog-template)
+[![Open in Repl.it](https://replit.com/badge/github/withastro/astro)](https://replit.com/github/mahomedalid/static-activitypub-blog-template)
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/mahomedalid/static-activitypub-blog-template)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/mahomedalid/static-activitypub-blog-template)
+
 
 ### Method 1: GitHub Codespaces
 
