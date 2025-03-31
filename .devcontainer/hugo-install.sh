@@ -8,7 +8,7 @@
 #|---------------------------------------------------|
 
 # Set Hugo version
-HUGO_VERSION="0.124.0"  # Replace with the version you want
+HUGO_VERSION="0.145.0"  # Replace with the version you want
 
 # Choose Hugo edition: "standard" or "extended"
 HUGO_EDITION="extended"
